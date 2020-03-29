@@ -1,0 +1,25 @@
+{
+  "name": "clean-structure",
+  "version": "1.0.0",
+  "description": "Lean Nodejs API ",
+  "main": "index.js",
+  "scripts": {
+    "windows": "SET NODE_ENV=dev&&nodemon index.js",
+    "start": "NODE_ENV=dev nodemon index.js",
+    "demo": "NODE_ENV=demo node index.js",
+    "prod": "NODE_ENV=prod node index.js"
+  },
+  "author": "Minh Do",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.6",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "signale": "^1.4.0",
+    "validator": "^13.0.0"
+  }
+}
