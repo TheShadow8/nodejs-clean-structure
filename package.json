@@ -1,7 +1,7 @@
 {
-  "name": "clean-structure",
+  "name": "nodejs-clean-structure",
   "version": "1.0.0",
-  "description": "Lean Nodejs API ",
+  "description": "Clean Nodejs API ",
   "main": "index.js",
   "scripts": {
     "windows": "SET NODE_ENV=dev&&nodemon index.js",
