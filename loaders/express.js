@@ -42,26 +42,28 @@ module.exports = app => {
   });
 
   // / error handlers
-  app.use((err, req, res, next) => {
-    /**
-     * Handle 401 thrown by express-jwt library
-     */
-    if (err.name === 'UnauthorizedError') {
-      return res
-        .status(err.status)
-        .send({ message: err.message })
-        .end();
-    }
-    return next(err);
-  });
+  // app.use((err, req, res, next) => {
+  //   /**
+  //    * Handle 401 thrown by express-jwt library
+  //    */
+  //   if (err.name === 'UnauthorizedError') {
+  //     return res
+  //       .status(err.status)
+  //       .send({ message: err.message })
+  //       .end();
+  //   }
+  //   return next(err);
+  // });
 
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
-    res.status(err.status || 500);
+    err.status = err.status || 500;
+    err.errorCode = err.errorCode || err.status;
 
-    res.json({
+    res.status(err.status).json({
       success: false,
-      error: err.message
+      errorCode: err.errorCode,
+      message: err.message
     });
   });
 };
