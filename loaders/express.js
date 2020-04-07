@@ -59,7 +59,7 @@ module.exports = (app) => {
 
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
-    Logger.error('🔥 error: %o', err.message);
+    Logger.error(`🔥 [  ${req.path}  ] : ${err.message} `);
 
     err.status = err.status || 500;
     err.errorCode = err.errorCode || err.status;
