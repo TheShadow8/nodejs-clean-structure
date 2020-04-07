@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const routes = require('../api');
 
-module.exports = app => {
+const routes = require('../api');
+const Logger = require('./logger');
+
+module.exports = (app) => {
   /**
    * Health Check endpoints
    * @TODO Explain why they are here
@@ -22,7 +24,7 @@ module.exports = app => {
   app.use(express.json());
   app.use(
     express.urlencoded({
-      extended: false
+      extended: false,
     })
   );
 
@@ -57,13 +59,15 @@ module.exports = app => {
 
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
+    Logger.error('🔥 error: %o', err.message);
+
     err.status = err.status || 500;
     err.errorCode = err.errorCode || err.status;
 
     res.status(err.status).json({
       success: false,
       errorCode: err.errorCode,
-      message: err.message
+      message: err.message,
     });
   });
 };
